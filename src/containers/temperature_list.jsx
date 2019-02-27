@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Table } from "semantic-ui-react";
 import GraphTemperature from "../components/Graph/graph_component";
-import ErrorNotification from "../components/errorNotification/errorNotification_component";
 const Timestamp = require("react-timestamp");
 
 class TemperatureList extends Component {
   renderTemperature(cityData) {
-    if (cityData !== undefined || cityData !== null) {
+    if (cityData.cod >= "400") {
+      return (
+        false
+      );
+    }
+    
       const name = cityData.city.name;
       const temps = cityData.list.map((temperature, i) => {
         return (
@@ -43,22 +47,15 @@ class TemperatureList extends Component {
         </div>
       );
     }
-  }
+ 
 
   render() {
-    console.log(this.props.temperature);
-    if (this.props.temperature.cod >= "400") {
       return (
-        <ErrorNotification data={this.props.temperature} key={Math.random()} />
+        <div className="C--table-list-container">
+          {this.props.temperature.map(this.renderTemperature)}
+        </div>
       );
-    } else {
-      return false;
-      // return (
-      //   <div className="C--table-list-container">
-      //     {this.props.temperature.map(this.renderTemperature)}
-      //   </div>
-      // );
-    }
+
   }
 }
 
