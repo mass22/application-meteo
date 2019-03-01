@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchTemperature } from "../actions/index";
+import { fetchTemperature } from "../../actions/index";
 import { Input } from "semantic-ui-react";
+import "./search-bar.scss";
 
 class SearchBar extends Component {
   constructor(props) {

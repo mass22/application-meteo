@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SearchBar from "./search_bar";
-import TemperatureList from "./temperature_list";
+import SearchBar from "./search-bar/search_bar";
+import TemperatureList from "./temperature_list/temperature_list";
 import { Container, Header } from "semantic-ui-react";
 
 class App extends Component {
